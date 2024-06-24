@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2160.0078, g: 2263.8008, b: 3286.5664, a: 1}
+  m_IndirectSpecularColor: {r: 2161.9473, g: 2265.8652, b: 3288.6172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -282,14 +282,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157207112}
-  m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.37297416, y: 0.2067917, z: -0.08565591, w: 0.9004391}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 815820435}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 25.868, z: 0}
 --- !u!114 &157207115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561,28 +561,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pos:
   - deg0
-  - deg30
-  - deg-30
   ecc:
   - 0
-  - +30
-  - -30
   stimuli:
-  - face1
-  - face2
-  - face3
+  - redCircle
   instrTextValues:
-  - "You will be reacting to three different faces in this protocol, and\r\n    pressing
-    the keys v, b, and n for each one. Please try to react to the\r\n    faces and
-    don't try to anticipate them. Press Spacebar when ready."
-  - This is Face 1. Press v to continue.
-  - This is Face 2. Press b to continue.
-  - This is Face 3. Press n to continue.
+  - "You will be reacting to a colored circle in this protocol, and\r\n    pressing
+    the key 'v' when you see it. Please try to react to the\r\n    faces and don't
+    try to anticipate them. Press Spacebar when ready."
+  - This is color 1. Press v to continue.
   - "Here are some practice rounds to familiarize you with the protocol.\r\n    Press
     Spacebar to begin."
   currentTrial: 1
-  trainingTrials: 3
-  trials: 5
+  trainingTrials: 5
+  trials: 100
   preCue_time: 0.5
   cue_time: 0.2
   time_min: 0.5

@@ -162,15 +162,15 @@ public class StimControl : MonoBehaviour
             instrText.GetComponent<TextMeshPro>().text = instrTextValues[instrNum];
             GameObject.Find("redCircle").transform.position = GameObject.Find("deg0").transform.position;
         }
-        // describes training rounds and removes face 3
-        if (Input.GetKeyDown(KeyCode.N) && instrNum == 3)
+        // describes training rounds and removes color 1
+        if (Input.GetKeyDown(KeyCode.V) && instrNum == 1)
         {
             instrNum++;
             instrText.GetComponent<TextMeshPro>().text = instrTextValues[instrNum];
             GameObject.Find("redCircle").transform.position = GameObject.Find("disappearPos").transform.position;
         }
         // removes instruction text and sets up phase 2
-        if (Input.GetKeyDown(KeyCode.Space) && instrNum == 4)
+        if (Input.GetKeyDown(KeyCode.Space) && instrNum == 2)
         {
             instrText.transform.position = GameObject.Find("disappearPos").transform.position;
             // setup for phase 2, starts the first training trial
