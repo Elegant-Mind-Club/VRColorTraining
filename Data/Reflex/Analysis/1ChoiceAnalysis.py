@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load the uploaded CSV file
-file_path = '/mnt/data/iran-rtData-2024-06-24-11-39-51.csv'
+file_path = '/Users/Mingda/Library/Mobile Documents/com~apple~CloudDocs/Documents/UCLA/Research/Github/VRColorTraining/Assets/Data/alisha-rtData-2024-06-24-12-05-33.csv'
 data = pd.read_csv(file_path)
 
 # Create an array of reaction time - object show time
