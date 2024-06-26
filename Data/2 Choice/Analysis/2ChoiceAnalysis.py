@@ -13,7 +13,7 @@ data = data[data['Correct'] == True]
 data['ReactionTime_ObjectShowTime'] = data['ReactionTime'] - data['ObjShowTime']
 
 # Subtract 100 ms from all of the reaction times
-data['AdjustedReactionTime_ObjectShowTime'] = data['ReactionTime_ObjectShowTime'] - 100
+data['AdjustedReactionTime_ObjectShowTime'] = data['ReactionTime_ObjectShowTime'] - 50
 
 # Separate the data by stimulus type
 red_circle_data = data[data['StimType'] == 'redCircle']
