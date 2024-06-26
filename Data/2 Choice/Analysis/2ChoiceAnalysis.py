@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load the uploaded CSV file
-file_path = '/Users/Mingda/Library/Mobile Documents/com~apple~CloudDocs/Documents/UCLA/Research/Github/VRColorTraining/Assets/Data/Anjali-rtData-2024-06-26-12-54-50.csv'
+file_path = '/Users/Mingda/Library/Mobile Documents/com~apple~CloudDocs/Documents/UCLA/Research/Github/VRColorTraining/Data/2 Choice/Anjali-rtData-2024-06-26-12-54-50.csv'
 data = pd.read_csv(file_path)
 
 # Filter out the false trials
@@ -41,8 +41,16 @@ green_std = green_circle_data_filtered.std()
 
 # Plot the histogram for both groups in one graph
 plt.figure(figsize=(12, 8))
-sns.histplot(red_circle_data_filtered, bins=30, kde=True, color='red', label='Red Circle')
-sns.histplot(green_circle_data_filtered, bins=30, kde=True, color='green', label='Green Circle')
+
+bin_width = 25
+bin_edges_red = range(int(red_circle_data['AdjustedReactionTime_ObjectShowTime'].min()), 
+                  int(red_circle_data['AdjustedReactionTime_ObjectShowTime'].max()) + bin_width, 
+                  bin_width)
+bin_edges_green = range(int(green_circle_data['AdjustedReactionTime_ObjectShowTime'].min()), 
+                  int(green_circle_data['AdjustedReactionTime_ObjectShowTime'].max()) + bin_width, 
+                  bin_width)
+sns.histplot(red_circle_data_filtered, bins=bin_edges_red, kde=True, color='red', label='Red Circle')
+sns.histplot(green_circle_data_filtered, bins=bin_edges_green, kde=True, color='green', label='Green Circle')
 
 # Plot mean and standard deviation for each group
 plt.axvline(red_mean, color='darkred', linestyle='solid', linewidth=2, label=f'Red Mean: {red_mean:.2f} ms')
@@ -59,6 +67,7 @@ plt.xlabel('Adjusted Reaction Time - Object Show Time (ms)')
 plt.ylabel('Frequency')
 plt.legend()
 plt.grid(True)
+plt.xlim(0, 500)
 plt.show()
 
 # Output mean and standard deviation for both groups

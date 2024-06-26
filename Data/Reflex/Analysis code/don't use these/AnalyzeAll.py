@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Directory containing the CSV files
-directory = '/Users/Mingda/Library/Mobile Documents/com~apple~CloudDocs/Documents/UCLA/Research/Github/VRColorTraining/Assets/Data/'
+directory = '/Users/Mingda/Library/Mobile Documents/com~apple~CloudDocs/Documents/UCLA/Research/Github/VRColorTraining/Data/Reflex/'
 
 # Output directory for histograms
 output_directory = os.path.join(directory, 'histograms')
@@ -20,6 +20,10 @@ for filename in os.listdir(directory):
 
         # Create an array of reaction time - object show time
         data['ReactionTime_ObjectShowTime'] = data['ReactionTime'] - data['ObjShowTime']
+        
+        # Print the lowest value in the 'ReactionTime' column before processing
+        lowest_value = data['ReactionTime_ObjectShowTime'].min()
+        print(f"File: {filename}, Lowest ReactionTime: {lowest_value}")
 
         # Remove outliers using the IQR method
         Q1 = data['ReactionTime_ObjectShowTime'].quantile(0.25)
@@ -28,10 +32,10 @@ for filename in os.listdir(directory):
         lower_bound = Q1 - 1.5 * IQR
         upper_bound = Q3 + 1.5 * IQR
 
-        filtered_data = data[(data['ReactionTime_ObjectShowTime'] >= lower_bound) & (data['ReactionTime_ObjectShowTime'] <= upper_bound)]
+        filtered_data = data[(data['ReactionTime_ObjectShowTime'] >= lower_bound) & (data['ReactionTime_ObjectShowTime'] <= upper_bound)].copy()
 
         # Subtract 140 ms
-        filtered_data['AdjustedReactionTime_ObjectShowTime'] = filtered_data['ReactionTime_ObjectShowTime'] - 140
+        filtered_data.loc[:, 'AdjustedReactionTime_ObjectShowTime'] = filtered_data['ReactionTime_ObjectShowTime'] - 50
 
         # Calculate mean and standard deviation
         mean_value = filtered_data['AdjustedReactionTime_ObjectShowTime'].mean()
