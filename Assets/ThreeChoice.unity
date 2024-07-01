@@ -523,8 +523,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 206325935}
-  - component: {fileID: 206325936}
   - component: {fileID: 206325937}
+  - component: {fileID: 206325938}
   m_Layer: 0
   m_Name: control
   m_TagString: Untagged
@@ -547,7 +547,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &206325936
+--- !u!114 &206325937
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -556,7 +556,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 206325934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1de47587f5c23e449a1813b78c03b5c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 94a84025532663b49a8d4cf65e835f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameInputField: {fileID: 1380075683}
+--- !u!114 &206325938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206325934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c35fd9c932ec5424eaa89e5f32f197b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pos:
@@ -565,11 +578,15 @@ MonoBehaviour:
   - 0
   stimuli:
   - redCircle
+  - greenCircle
+  - blueCircle
   instrTextValues:
-  - "You will be reacting to a colored circle in this protocol, and\r\n    pressing
-    the key 'v' when you see it. Please try to react to the\r\n    faces and don't
-    try to anticipate them. Press Spacebar when ready."
-  - This is color 1. Press v to continue.
+  - "You will be reacting to three different colors in this protocol, and\r\n   
+    pressing the keys v, b, or n for each one. Please try to react to the\r\n   
+    colors and don't try to anticipate them. Press Spacebar when ready."
+  - This is Color 1. Press v to continue.
+  - This is Color 2. Press b to continue.
+  - This is Color 3. Press n to continue.
   - "Here are some practice rounds to familiarize you with the protocol.\r\n    Press
     Spacebar to begin."
   currentTrial: 1
@@ -586,19 +603,6 @@ MonoBehaviour:
   instrText: {fileID: 0}
   nameInputField: {fileID: 0}
   participantID: 
---- !u!114 &206325937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 206325934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94a84025532663b49a8d4cf65e835f3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameInputField: {fileID: 1380075683}
 --- !u!1 &234375053
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,16 +1795,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a2226e0b094fa941832dbf03bf63b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xrCamera: {fileID: 0}
-  printFramerate: 0
-  gazeCalibrationMode: 0
-  calibrationKey: 92
-  loggingToggleKey: 305
-  gazeFilterType: 0
-  fileName: 
-  useCustomLogPath: 0
-  customLogPath: 
-  logging: 0
 --- !u!4 &1206417406
 Transform:
   m_ObjectHideFlags: 0

@@ -15,39 +15,27 @@ using TMPro;
  * - a object called "Cue"
  */
 
-public class OneChoiceStimControl: MonoBehaviour
+public class ThreeStimControl : MonoBehaviour
 {
     // independent variable being tested
     // calculated for 0.5m distance from camera to deg0
     public string[] pos = { "deg0"}; // different random positions available (Unity object names)
     public string[] ecc = { "0"}; // names to write to csv file, corresponding respectively to pos
-    public string[] stimuli = { "redCircle"}; // names of different stimuli (Unity object names)
+    public string[] stimuli = { "redCircle", "greenCircle", "blueCircle"}; // names of different stimuli (Unity object names)
 
     // self explanatory
-    /*
     public string[] instrTextValues = {
     // instruction 1
-    @"You will be reacting to three different faces in this protocol, and
-    pressing the keys v, b, and n for each one. Please try to react to the
-    faces and don't try to anticipate them. Press Spacebar when ready.",
+    @"You will be reacting to three different colors in this protocol, and
+    pressing the keys v, b, or n for each one. Please try to react to the
+    colors and don't try to anticipate them. Press Spacebar when ready.",
     // instruction 2
-    @"This is Face 1. Press v to continue.",
+    @"This is Color 1. Press v to continue.",
     // instruction 3
-    @"This is Face 2. Press b to continue.",
+    @"This is Color 2. Press b to continue.",
+    // instruction 3
+    @"This is Color 3. Press n to continue.",
     // instruction 4
-    @"This is Face 3. Press n to continue.",
-    // instruction 5
-    @"Here are some practice rounds to familiarize you with the protocol.
-    Press Spacebar to begin.",
-    };*/
-    public string[] instrTextValues = {
-    // instruction 1
-    @"You will be reacting to a colored circle in this protocol, and
-    pressing the key 'v' when you see it. Please try to react to the
-    faces and don't try to anticipate them. Press Spacebar when ready.",
-    // instruction 2
-    @"This is color 1. Press v to continue.",
-    // instruction 3
     @"Here are some practice rounds to familiarize you with the protocol.
     Press Spacebar to begin.",
     };
@@ -121,9 +109,11 @@ public class OneChoiceStimControl: MonoBehaviour
 
     void phase0() // participant name/ID input phase
     {
+        Debug.Log("asdf.");
         // creates data file and sets participant name
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
-        {
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)) {
+
+            Debug.Log("sdfg.");
             participantID = nameInputField.text;
 
             // creates data folder / file
@@ -137,10 +127,10 @@ public class OneChoiceStimControl: MonoBehaviour
             
             // moves canvas to behind the plane
             GameObject.Find("Canvas").transform.position = GameObject.Find("disappearPos").transform.position; // canvas disappears
-
+            
             // warns if logging has not started
-            // bool loggingStarted = GameObject.Find("eyeTracking").GetComponent<EyeTrackingControl>().logging;
-            bool loggingStarted = false;
+            //bool loggingStarted = GameObject.Find("eyeTracking").GetComponent<EyeTrackingControl>().logging;
+            bool loggingStarted = true;
             if (!loggingStarted)
             {
                 Debug.Log("Eye tracking was not started.");
@@ -163,15 +153,31 @@ public class OneChoiceStimControl: MonoBehaviour
             instrText.GetComponent<TextMeshPro>().text = instrTextValues[instrNum];
             GameObject.Find("redCircle").transform.position = GameObject.Find("deg0").transform.position;
         }
-        // describes training rounds and removes color 1
+        // moves onto face 2 / instruction 3
         if (Input.GetKeyDown(KeyCode.V) && instrNum == 1)
         {
             instrNum++;
             instrText.GetComponent<TextMeshPro>().text = instrTextValues[instrNum];
             GameObject.Find("redCircle").transform.position = GameObject.Find("disappearPos").transform.position;
+            GameObject.Find("greenCircle").transform.position = GameObject.Find("deg0").transform.position;
+        }
+        // moves onto face 2 / instruction 3
+        if (Input.GetKeyDown(KeyCode.B) && instrNum == 2)
+        {
+            instrNum++;
+            instrText.GetComponent<TextMeshPro>().text = instrTextValues[instrNum];
+            GameObject.Find("greenCircle").transform.position = GameObject.Find("disappearPos").transform.position;
+            GameObject.Find("blueCircle").transform.position = GameObject.Find("deg0").transform.position;
+        }
+        // describes training rounds and removes face 3
+        if (Input.GetKeyDown(KeyCode.N) && instrNum == 3)
+        {
+            instrNum++;
+            instrText.GetComponent<TextMeshPro>().text = instrTextValues[instrNum];
+            GameObject.Find("blueCircle").transform.position = GameObject.Find("disappearPos").transform.position;
         }
         // removes instruction text and sets up phase 2
-        if (Input.GetKeyDown(KeyCode.Space) && instrNum == 2)
+        if (Input.GetKeyDown(KeyCode.Space) && instrNum == 4)
         {
             instrText.transform.position = GameObject.Find("disappearPos").transform.position;
             // setup for phase 2, starts the first training trial
@@ -189,6 +195,8 @@ public class OneChoiceStimControl: MonoBehaviour
         {
             // sets response key
             if (Input.GetKeyDown(KeyCode.V)) { responseKey = "redCircle"; }
+            else if (Input.GetKeyDown(KeyCode.B)) { responseKey = "greenCircle"; }
+            else if (Input.GetKeyDown(KeyCode.N)) { responseKey = "blueCircle"; }
             // if one of the buttons has been pressed, log data and set up next trial
             if (responseKey != "")
             {
@@ -264,6 +272,8 @@ public class OneChoiceStimControl: MonoBehaviour
         {
             // sets response key
             if (Input.GetKeyDown(KeyCode.V)) { responseKey = "redCircle"; }
+            else if (Input.GetKeyDown(KeyCode.B)) { responseKey = "greenCircle"; }
+            else if (Input.GetKeyDown(KeyCode.B)) { responseKey = "blueCircle"; }
             // if one of the buttons has been pressed, log data and set up next trial
             if (responseKey != "")
             {
