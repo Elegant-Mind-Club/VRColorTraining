@@ -151,30 +151,30 @@ public class ThreeStimControl : MonoBehaviour
         {
             instrNum++;
             instrText.GetComponent<TextMeshPro>().text = instrTextValues[instrNum];
-            GameObject.Find("redCircle").transform.position = GameObject.Find("deg0").transform.position;
+            GameObject.Find(stimuli[0]).transform.position = GameObject.Find("deg0").transform.position;
         }
         // moves onto face 2 / instruction 3
         if (Input.GetKeyDown(KeyCode.V) && instrNum == 1)
         {
             instrNum++;
             instrText.GetComponent<TextMeshPro>().text = instrTextValues[instrNum];
-            GameObject.Find("redCircle").transform.position = GameObject.Find("disappearPos").transform.position;
-            GameObject.Find("greenCircle").transform.position = GameObject.Find("deg0").transform.position;
+            GameObject.Find(stimuli[0]).transform.position = GameObject.Find("disappearPos").transform.position;
+            GameObject.Find(stimuli[1]).transform.position = GameObject.Find("deg0").transform.position;
         }
         // moves onto face 2 / instruction 3
         if (Input.GetKeyDown(KeyCode.B) && instrNum == 2)
         {
             instrNum++;
             instrText.GetComponent<TextMeshPro>().text = instrTextValues[instrNum];
-            GameObject.Find("greenCircle").transform.position = GameObject.Find("disappearPos").transform.position;
-            GameObject.Find("blueCircle").transform.position = GameObject.Find("deg0").transform.position;
+            GameObject.Find(stimuli[1]).transform.position = GameObject.Find("disappearPos").transform.position;
+            GameObject.Find(stimuli[2]).transform.position = GameObject.Find("deg0").transform.position;
         }
         // describes training rounds and removes face 3
         if (Input.GetKeyDown(KeyCode.N) && instrNum == 3)
         {
             instrNum++;
             instrText.GetComponent<TextMeshPro>().text = instrTextValues[instrNum];
-            GameObject.Find("blueCircle").transform.position = GameObject.Find("disappearPos").transform.position;
+            GameObject.Find(stimuli[2]).transform.position = GameObject.Find("disappearPos").transform.position;
         }
         // removes instruction text and sets up phase 2
         if (Input.GetKeyDown(KeyCode.Space) && instrNum == 4)
