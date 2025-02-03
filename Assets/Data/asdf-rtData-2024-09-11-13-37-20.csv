@@ -1,0 +1,4 @@
+CueShowTime,ObjShowTime,ReactionTime,Eccentricity,StimType,Guess,Correct
+1726087068636,1726087069860,1726087070880,0,greenCircle,greenCircle,True
+1726087071392,1726087072809,1726087073312,0,redCircle,redCircle,True
+1726087073816,1726087074912,1726087075417,0,greenCircle,redCircle,False

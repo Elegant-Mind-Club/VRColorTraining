@@ -273,7 +273,7 @@ public class ThreeStimControl : MonoBehaviour
             // sets response key
             if (Input.GetKeyDown(KeyCode.V)) { responseKey = "redCircle"; }
             else if (Input.GetKeyDown(KeyCode.B)) { responseKey = "greenCircle"; }
-            else if (Input.GetKeyDown(KeyCode.B)) { responseKey = "blueCircle"; }
+            else if (Input.GetKeyDown(KeyCode.N)) { responseKey = "blueCircle"; }
             // if one of the buttons has been pressed, log data and set up next trial
             if (responseKey != "")
             {
